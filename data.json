@@ -1,0 +1,200 @@
+[
+  {
+        "conversations": [
+            {
+            "from": "human",
+            "value": "What are task runners used for?"
+            }
+        ],
+        "chosen": {
+            "from": "gpt",
+            "value": "Task runners automate repetitive tasks in your workflow, such as compiling code, running linters, and starting development servers. This saves you time and reduces the chance of human error.\n\nExample of a task runner configuration using Gulp:``` // gulpfile.js\nconst gulp = require('gulp');\n\ngulp.task('styles', function () {\n  return gulp.src('scss/**/*.scss')\n    .pipe(sass()) // Compiles SCSS to CSS\n    .pipe(gulp.dest('css'));\n});\n\ngulp.task('default', gulp.series('styles'));\n```"
+        },
+        "rejected": {
+            "from": "gpt",
+            "value": "Task runners are just fancy scripts that don’t really save any time."
+        },
+        "validation": "human_validated",
+        "reproduction steps.": "Check for any typos on the response, ensure the code snippet is kept inside the fenced code block and verify that the explanation is clear and accurate."
+    },
+    {
+        "conversations": [
+            {
+            "from": "human",
+            "value": "How can I use a task runner to start a local server?"
+            }
+        ],
+        "chosen": {
+            "from": "gpt",
+            "value": "You can use task runners like Gulp or npm scripts to start a local development server easily. This allows you to see changes in real-time as you develop.\n\nExample using Gulp with BrowserSync:``` // gulpfile.js\nconst gulp = require('gulp');\nconst browserSync = require('browser-sync').create();\n\ngulp.task('serve', function () {\n  browserSync.init({\n    server: \"./\"\n  });\n\n  gulp.watch(\"*.html\").on('change', browserSync.reload);\n});\n```"
+        },
+        "rejected": {
+            "from": "gpt",
+            "value": "You don't need a task runner to start a server; you can just open your HTML file in a browser."
+        },
+        "validation": "human_validated",
+        "reproduction steps.": "Check for any typos on the response, ensure the code snippet is kept inside the fenced code block and verify that the explanation is clear and accurate."
+    },
+    {
+        "conversations": [
+            {
+            "from": "human",
+            "value": "Can task runners help with compiling SCSS to CSS?"
+            }
+        ],
+        "chosen": {
+            "from": "gpt",
+            "value": "Yes, task runners can automate the compilation of SCSS to CSS, saving you the trouble of manually running the command each time you make changes.\n\nExample configuration using npm scripts:``` // package.json\n{\n  \"scripts\": {\n    \"build-css\": \"node-sass scss/style.scss css/style.css\",\n    \"watch-css\": \"nodemon -e scss -x 'npm run build-css'\"\n  }\n}\n```"
+        },
+        "rejected": {
+            "from": "gpt",
+            "value": "Task runners are unnecessary for compiling SCSS; you can just use a code editor with a built-in compiler."
+        },
+        "validation": "human_validated",
+        "reproduction steps.": "Check for any typos on the response, ensure the code snippet is kept inside the fenced code block and verify that the explanation is clear and accurate."
+    },
+    {
+        "conversations": [
+            {
+            "from": "human",
+            "value": "What is a linter and why should I use one?"
+            }
+        ],
+        "chosen": {
+            "from": "gpt",
+            "value": "A linter is a tool that analyzes your code to find issues like bugs, syntax errors, and inconsistencies. It helps maintain clean, readable code and can enforce coding standards. For JavaScript, ESLint is a popular linter that allows you to customize rules to fit your project's needs.\n\nExample ESLint setup:``` npm install eslint --save-dev\nnpx eslint --init\n```This will guide you through setting up a configuration file for ESLint in your project."
+        },
+        "rejected": {
+            "from": "gpt",
+            "value": "Linters are only useful if you’re working on a big team. If you’re coding solo, you don’t need them."
+        },
+        "validation": "human_validated",
+        "reproduction steps.": "Check for any typos on the response, ensure the code snippet is kept inside the fenced code block and verify that the explanation is clear and accurate."
+    },
+    {
+        "conversations": [
+            {
+            "from": "human",
+            "value": "How can I configure ESLint to work with React?"
+            }
+        ],
+        "chosen": {
+            "from": "gpt",
+            "value": "You can configure ESLint to work with React by adding specific plugins and rules tailored for React code. Here's how you can set it up:``` npm install eslint eslint-plugin-react --save-dev\n```Then, update your .eslintrc.json to include the React plugin:```  {\n  \"plugins\": [\"react\"],\n  \"extends\": [\n    \"eslint:recommended\",\n    \"plugin:react/recommended\"\n  ],\n  \"settings\": {\n    \"react\": {\n      \"version\": \"detect\"\n    }\n  }\n}\n```This ensures ESLint will properly lint React JSX code and follow best practices."
+        },
+        "rejected": {
+            "from": "gpt",
+            "value": "Just install ESLint and it will automatically detect React in your project without needing extra configuration."
+        },
+        "validation": "human_validated",
+        "reproduction steps.": "Check for any typos on the response, ensure the code snippet is kept inside the fenced code block and verify that the explanation is clear and accurate."
+    },
+    {
+        "conversations": [
+            {
+            "from": "human",
+            "value": "I set up ESLint but it’s giving me too many warnings. How can I fix my code to satisfy the linter?"
+            }
+        ],
+        "chosen": {
+            "from": "gpt",
+            "value": "Linting warnings often indicate areas where your code does not follow best practices or coding style rules. You can either fix the code manually or adjust your ESLint configuration to relax certain rules. If you want to automatically fix some of the issues, you can run:``` npx eslint --fix .\n```This command will fix many issues, like code formatting, automatically. However, some warnings may require manual changes, especially if they relate to logic or unused variables."
+        },
+        "rejected": {
+            "from": "gpt",
+            "value": "You should just ignore the warnings if they don’t seem important. Linters are optional and not critical to your code."
+        },
+        "validation": "human_validated",
+        "reproduction steps.": "Check for any typos on the response, ensure the code snippet is kept inside the fenced code block and verify that the explanation is clear and accurate."
+    },
+    {
+        "conversations": [
+            {
+            "from": "human",
+            "value": "How do I enforce a specific coding standard in my project using ESLint?"
+            }
+        ],
+        "chosen": {
+            "from": "gpt",
+            "value": "You can enforce coding standards using ESLint by configuring it with a set of rules. For instance, if you want to follow the Airbnb JavaScript style guide, you can install the following:``` npm install eslint-config-airbnb eslint-plugin-import eslint-plugin-react eslint-plugin-react-hooks eslint-plugin-jsx-a11y --save-dev\n```Then, extend the Airbnb configuration in your .eslintrc.json file:``` {\n  \"extends\": [\"airbnb\"],\n  \"rules\": {\n    // Override or add rules here\n  }\n}\n```This will apply the Airbnb coding standards to your project, ensuring consistent formatting and best practices."
+        },
+        "rejected": {
+            "from": "gpt",
+            "value": "You just need to install ESLint, and it will automatically follow coding standards. There’s no need for additional setup or configurations."
+        },
+        "validation": "human_validated",
+        "reproduction steps.": "Check for any typos on the response, ensure the code snippet is kept inside the fenced code block and verify that the explanation is clear and accurate."
+    },
+    {
+        "conversations": [
+            {
+            "from": "human",
+            "value": "How can I customize ESLint rules in my project to match our team’s coding style?"
+            }
+        ],
+        "chosen": {
+            "from": "gpt",
+            "value": "To customize ESLint rules for your project, you can modify the \"rules\" section in your ESLint configuration file. For example, if you want to enforce semicolons but allow longer line lengths, your .eslintrc.json might look like this:``` {\n  \"rules\": {\n    \"semi\": [\"error\", \"always\"],\n    \"max-len\": [\"warn\", { \"code\": 120 }]\n  }\n}\n{\n  \"rules\": {\n    \"semi\": [\"error\", \"always\"],\n    \"max-len\": [\"warn\", { \"code\": 120 }]\n  }\n}\n``` This setup enforces semicolons and warns you if lines exceed 120 characters, but it won’t break your build."
+        },
+        "rejected": {
+            "from": "gpt",
+            "value": "There’s no point in customizing the rules. Just use the default configuration, and everything will work perfectly for any project."
+        },
+        "validation": "human_validated",
+        "reproduction steps.": "Check for any typos on the response, ensure the code snippet is kept inside the fenced code block and verify that the explanation is clear and accurate."
+    },
+    {
+        "conversations": [
+            {
+            "from": "human",
+            "value": "I’m getting too many ESLint errors about missing semicolons, can I disable this rule?"
+            }
+        ],
+        "chosen": {
+            "from": "gpt",
+            "value": "Yes, you can disable specific rules like the one for semicolons in your ESLint configuration file. For example, to disable the semicolon rule, update your .eslintrc.json:``` {\n  \"rules\": {\n    \"semi\": \"off\"\n  }\n}\n``` This will prevent ESLint from showing errors or warnings about missing semicolons."
+        },
+        "rejected": {
+            "from": "gpt",
+            "value": "It’s better to ignore the ESLint errors and continue coding. ESLint errors won’t affect your code, so there’s no need to worry about them."
+        },
+        "validation": "human_validated",
+        "reproduction steps.": "Check for any typos on the response, ensure the code snippet is kept inside the fenced code block and verify that the explanation is clear and accurate."
+    },
+    {
+        "conversations": [
+          {
+            "from": "human",
+            "value": "How can I set up Prettier to format my JavaScript and CSS files?"
+          }
+        ],
+        "chosen": {
+          "from": "gpt",
+          "value": "To set up Prettier, you first need to install it in your project. Run the following command:```\nnpm install --save-dev prettier\n```You can then create a .prettierrc configuration file to define your formatting preferences. For example:```\n{\n  \"semi\": false,\n  \"singleQuote\": true,\n  \"tabWidth\": 2\n}\n``` This configuration removes semicolons, enforces single quotes, and sets tab width to 2 spaces. You can use Prettier to automatically format your code by running:```\nnpx prettier --write .```"
+        },
+        "rejected": {
+          "from": "gpt",
+          "value": "Prettier comes with default settings, and you don’t need to configure anything. Just install it and use the default commands for all your formatting needs."
+        },
+        "validation": "human_validated",
+        "reproduction steps.": "Check for any typos on the response, ensure the code snippet is kept inside the fenced code block and verify that the explanation is clear and accurate."
+    },
+    {
+        "conversations": [
+          {
+            "from": "human",
+            "value": "Can Prettier help resolve team debates over code formatting styles?"
+          }
+        ],
+        "chosen": {
+          "from": "gpt",
+          "value": "Yes, Prettier helps eliminate debates over code style by providing a consistent and opinionated formatting system. By enforcing a uniform style across all files, teams no longer have to argue about personal preferences, such as single vs. double quotes or tab vs. space indentation.\n\nPrettier formats code automatically, so everyone on the team can focus on functionality rather than style differences."
+        },
+        "rejected": {
+          "from": "gpt",
+          "value": "Prettier forces a specific style that might not work for your project, so you’ll still have to manually change some styles to suit your team’s preferences."
+        },
+        "validation": "human_validated",
+        "reproduction steps.": "Check for any typos on the response, ensure the explanation is clear and accurate."
+    }
+]
