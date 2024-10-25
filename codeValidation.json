@@ -1,0 +1,36 @@
+[
+    {
+      "conversations": [
+        {
+          "from": "human",
+          "value": "What are some modern ways to write CSS in front-end applications?"
+        }
+      ],
+      "chosen": {
+        "from": "gpt",
+        "value": "Modern front-end applications utilize various methods for writing CSS, which enhance modularity and reusability. Popular approaches include Styled Components, CSS Modules, Styled JSX, and Emotion. These methods allow for scoped styles, dynamic styling, and easier maintenance.\n\nExample of using Styled Components:import styled from 'styled-components';\n\nconst Button = styled.button`\n  background-color: blue;\n  color: white;\n  padding: 10px;\n  border: none;\n  border-radius: 5px;\n  \n  &:hover {\n    background-color: darkblue;\n  }\n`;\n\nconst App = () => <Button>Click Me</Button>;\n"
+      },
+      "rejected": {
+        "from": "gpt",
+        "value": "Modern CSS methods are just variations of traditional CSS and do not offer any real advantages over writing plain CSS in stylesheets."
+      }
+    },
+    {
+      "conversations": [
+        {
+          "from": "human",
+          "value": "Can you explain how CSS Modules work?"
+        }
+      ],
+      "chosen": {
+        "from": "gpt",
+        "value": "CSS Modules allow you to write CSS in a modular fashion, where each class name is scoped locally by default. This prevents naming conflicts and makes styles easier to manage. You import the CSS file as a module in your JavaScript files.\n\nExample of CSS Modules usage:``` /* styles.module.css */\n.button {\n  background-color: green;\n  color: white;\n  padding: 10px; \n} import styles from './styles.module.css';\n\nconst App = () => <button className={styles.button}>Click Me</button>;\n\n```"
+      },
+      "rejected": {
+        "from": "gpt",
+        "value": "CSS Modules do not change the way CSS is written; they just rename classes to avoid conflicts."
+      },
+      "validation": "human_validated",
+      "reproduction steps.": "1. Create a CSS file with styles using CSS Modules syntax. 2. Import the CSS file as a module in a JavaScript file. 3. Use the imported styles in the component's JSX to apply the scoped styles."
+    }
+]
